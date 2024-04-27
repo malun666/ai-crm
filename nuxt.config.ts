@@ -9,5 +9,12 @@ export default defineNuxtConfig({
     dbDatabase: "",
     dbPort: "",
   },
-  modules: ["@nuxt/test-utils/module"],
+  modules: ["@nuxt/test-utils/module", "@nuxtjs/tailwindcss", "nuxt-svgo"],
+  plugins: ["@/plugins/antd"],
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  },
+  css: ["@/assets/css/main.css"]
 });

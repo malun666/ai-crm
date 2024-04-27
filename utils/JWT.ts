@@ -2,10 +2,9 @@ import type {
   SignOptions,
   JwtPayload,
   VerifyOptions,
-  Jwt,
-  VerifyErrors,
   VerifyErrors,
 } from "jsonwebtoken";
+
 const jwt = require("jsonwebtoken");
 
 export class AuthToken {
@@ -47,7 +46,7 @@ export class AuthToken {
   verify(
     token: string,
     verifyOptions: VerifyOptions
-  ): Promise<JwtPayload | VerifyErrors> {
+  ): Promise<(JwtPayload) | VerifyErrors> {
     return new Promise((resolve, reject) => {
       jwt.verify(
         token,
@@ -69,7 +68,10 @@ export class AuthToken {
    * @param verifyOptions {}
    * @returns string the new access token
    */
-  refreshToken(token: string, verifyOptions?: VerifyOptions): Promise<string | Error> {
+  refreshToken(
+    token: string,
+    verifyOptions?: VerifyOptions
+  ): Promise<string | Error> {
     return new Promise((resolve, reject) => {
       jwt.verify(
         token,
@@ -78,7 +80,7 @@ export class AuthToken {
           if (error) {
             reject(error);
           } else {
-            resolve(this.sign({id: payload.id}, this.options));
+            resolve(this.sign({ id: payload.id }, this.options));
           }
         }
       );
