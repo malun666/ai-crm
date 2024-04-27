@@ -3,15 +3,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "nuxt build --dotenv .env.product",
+    "dev": "nuxt dev --public --dotenv .env.development",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "drizzle": "drizzle-kit studio --port 3002",
+    "sql-generate": "drizzle-kit generate:mysql"
   },
   "dependencies": {
+    "drizzle-orm": "^0.30.9",
+    "mysql2": "^3.9.7",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.20.17"
   }
 }
