@@ -1,0 +1,15 @@
+# get all the permissions
+GET http://localhost:3000/api/sys/all_permissions
+
+
+# get all the users
+GET http://localhost:3000/api/sys/all_users
+
+# login
+POST http://localhost:3000/api/auth/login 
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}

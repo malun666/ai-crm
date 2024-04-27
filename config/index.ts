@@ -1,0 +1,1 @@
+export const ShopName:string = "AICODER CRM";

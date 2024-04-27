@@ -1,17 +1,14 @@
 /*
- Navicat Premium Data Transfer
-
- Source Server         : okhelper
+ Source Server         : ai_crm
  Source Server Type    : MySQL
- Source Server Version : 80011
- Source Host           : 139.199.30.155:3306
- Source Schema         : okhelper
+ Source Host           : localhost:3306
+ Source Schema         : ai_crm
 
  Target Server Type    : MySQL
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/05/2018 10:46:06
+ Date: 2024/04/24
 */
 
 SET NAMES utf8mb4;
