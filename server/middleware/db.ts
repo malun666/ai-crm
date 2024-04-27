@@ -6,14 +6,6 @@ export default defineEventHandler(async (event) => {
   const { dbDatabase, dbPassword, dbPort, dbServer, dbUser } =
     useRuntimeConfig(event);
 
-    console.log({
-      dbDatabase,
-      dbPassword,
-      dbPort,
-      dbServer,
-      dbUser
-    })
-
   const poolConnection = mysql.createPool({
     host: dbServer,
     user: dbUser,

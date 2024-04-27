@@ -5,6 +5,8 @@
   "scripts": {
     "build": "nuxt build --dotenv .env.product",
     "dev": "nuxt dev --public --dotenv .env.development",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -12,14 +14,22 @@
     "sql-generate": "drizzle-kit generate:mysql"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "axios": "^1.6.8",
     "drizzle-orm": "^0.30.9",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.7",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.12.1",
+    "@vue/test-utils": "^2.4.5",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.20.17"
+    "drizzle-kit": "^0.20.17",
+    "happy-dom": "^14.7.1",
+    "playwright-core": "^1.43.1",
+    "vitest": "^1.5.2"
   }
 }

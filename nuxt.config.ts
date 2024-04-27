@@ -9,4 +9,5 @@ export default defineNuxtConfig({
     dbDatabase: "",
     dbPort: "",
   },
+  modules: ["@nuxt/test-utils/module"],
 });
