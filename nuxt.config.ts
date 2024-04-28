@@ -9,12 +9,20 @@ export default defineNuxtConfig({
     dbDatabase: "",
     dbPort: "",
   },
-  modules: ["@nuxt/test-utils/module", "@nuxtjs/tailwindcss", "nuxt-svgo"],
+  modules: [
+    "@nuxt/test-utils/module",
+    "@nuxtjs/tailwindcss",
+    "nuxt-svgo",
+    "@pinia/nuxt",
+  ],
   plugins: ["@/plugins/antd"],
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
     // and more...
   },
-  css: ["@/assets/css/main.css"]
+  css: ["@/assets/css/main.css"],
+  pinia: {
+    storesDirs: ["./stores/**"],
+  },
 });

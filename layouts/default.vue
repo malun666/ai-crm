@@ -1,7 +1,8 @@
 <template>
-  <div class="min-h-[100vh]">
+  <div class="min-h-[100vh] flex">
     <site-aside />
-    <main>
+    <main class="flex-1 h-screen overflow-y-auto relative">
+      <main-header />
       <slot />
     </main>
   </div>
