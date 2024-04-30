@@ -11,7 +11,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "drizzle": "drizzle-kit studio --port 3002",
-    "sql-generate": "drizzle-kit generate:mysql"
+    "sql-generate": "drizzle-kit generate:mysql",
+    "schema-generate": "drizzle-kit introspect:mysql"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",

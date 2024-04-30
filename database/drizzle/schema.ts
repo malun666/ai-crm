@@ -160,10 +160,10 @@ export const product = mysqlTable("product", {
 },
 (table) => {
 	return {
-		goodsBarCode: index("goods_barCode").on(table.barCode),
-		goodsCategory: index("goods_category").on(table.categoryId),
-		goodsNameStoreId: index("goods_name_storeId").on(table.productName, table.storeId),
 		goodsStoreId: index("goods_store_id").on(table.storeId),
+		goodsNameStoreId: index("goods_name_storeId").on(table.productName, table.storeId),
+		goodsCategory: index("goods_category").on(table.categoryId),
+		goodsBarCode: index("goods_barCode").on(table.barCode),
 		productId: primaryKey({ columns: [table.id], name: "product_id"}),
 	}
 });
@@ -225,8 +225,8 @@ export const saleOrder = mysqlTable("sale_order", {
 },
 (table) => {
 	return {
-		saleSumPriceStore: index("sale_sum_price_store").on(table.sumPrice, table.storeId),
 		salesStore: index("sales_store").on(table.storeId),
+		saleSumPriceStore: index("sale_sum_price_store").on(table.sumPrice, table.storeId),
 		saleOrderId: primaryKey({ columns: [table.id], name: "sale_order_id"}),
 		salesNumUk: unique("sales_num_uk").on(table.orderNumber),
 	}
@@ -372,8 +372,8 @@ export const user = mysqlTable("user", {
 	passAnswer: varchar("pass_answer", { length: 65 }),
 	userNick: varchar("user_nick", { length: 20 }),
 	userAvatar: varchar("user_avatar", { length: 200 }),
-	userEmail: varchar("user_email", { length: 30 }),
-	userSex: char("user_sex", { length: 2 }).default('保密'),
+	userEmail: varchar("user_email", { length: 64 }),
+	userGender: int("user_gender").default(1),
 	userPhone: char("user_phone", { length: 11 }),
 	userBirthday: timestamp("user_birthday", { mode: 'string' }).default(sql`CURRENT_TIMESTAMP`),
 	lastLoginIp: varchar("last_login_ip", { length: 20 }),

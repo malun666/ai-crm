@@ -570,8 +570,8 @@ CREATE TABLE `user` (
   `pass_answer` varchar(65) DEFAULT NULL COMMENT '密保答案',
   `user_nick` varchar(20) DEFAULT NULL COMMENT '昵称',
   `user_avatar` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像',
-  `user_email` varchar(30) DEFAULT NULL COMMENT '邮箱',
-  `user_sex` char(2) DEFAULT '保密' COMMENT '性别',
+  `user_email` varchar(64) DEFAULT NULL COMMENT '邮箱',
+  `user_gender` int(4) DEFAULT '1' COMMENT '性别',
   `user_phone` char(11) DEFAULT NULL COMMENT '手机号',
   `user_birthday` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '生日',
   `last_login_ip` varchar(20) DEFAULT NULL COMMENT '最后一次登陆IP',
@@ -584,6 +584,8 @@ CREATE TABLE `user` (
   UNIQUE KEY `uk_sys_user_name` (`user_name`),
   KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+
+INSERT INTO `user` VALUES (1, 'admin', 'admin', NULL, NULL, 'admin', NULL, NULL, 1, '18888888888', '1999-01-01 00:00:00', NULL, 1, '2018-04-21 13:59:25', '2018-04-21 13:59:25', 1, 0);
 
 -- ----------------------------
 -- Table structure for user_role

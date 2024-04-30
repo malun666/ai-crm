@@ -4,7 +4,7 @@
     id="login-page"
   >
     <div class="w-[300px] sm:w-[400px]">
-      <a-card :bordered="true" hoverable >
+      <a-card :bordered="true" hoverable>
         <template #title>
           <AuthLoginCardTitle />
         </template>
@@ -60,7 +60,12 @@
 </template>
 <script lang="ts" setup>
 import { reactive } from "vue";
-const router = useRouter()
+import { useAuthStore } from "~/stores/auth";
+import { message } from "ant-design-vue";
+const authStore = useAuthStore();
+const { login: loginService } = authStore;
+
+const router = useRouter();
 definePageMeta({
   layout: false,
 });
@@ -72,18 +77,31 @@ interface FormState {
 }
 
 const formState = reactive<FormState>({
-  username: "",
-  password: "",
+  username: "admin",
+  password: "admin",
   remember: true,
 });
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-  // redirect to /home
-  router.push("/home");
+const onFinish = async (values: any) => {
+  const res = await loginService({
+    username: formState.username,
+    password: formState.password,
+  });
+  const { error, result } = res;
+  if (error) {
+    message.error("Login failed, please check your username and password.");
+  } else {
+    // save the refresh token and the accesstoken to the localstorage and sessionstorage
+    const { accessToken, refreshToken, user } = res;
+    authStore.setAccessToken(accessToken);
+    authStore.setRefreshToken(refreshToken);
+    authStore.setUser(user);
+    router.push("/home");
+  }
 };
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
+  // show error message
+  message.error("Login failed, please check your username and password.");
 };
 
 const resetForm = () => {
@@ -99,7 +117,6 @@ const resetForm = () => {
   background-size: cover;
   /* add filter for the background */
   /* filter: blur(3px); */
-  opacity: .9;
+  opacity: 0.9;
 }
-
 </style>

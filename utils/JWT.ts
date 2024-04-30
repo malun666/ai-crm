@@ -5,7 +5,8 @@ import type {
   VerifyErrors,
 } from "jsonwebtoken";
 
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
+import jwt from 'jsonwebtoken';
 
 export class AuthToken {
   accessSecret: string;
